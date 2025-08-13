@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<title>NYC Weekend Guide</title>
+<meta content="Interactive NYC weekend itinerary with Central Park map, Apple Maps links, and tabbed days." name="description"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&amp;family=Playfair+Display:wght@600;700&amp;display=swap" rel="stylesheet"/>
+<style>
+:root{
+  --bg:#f8fafc;
+  --card:#ffffff;
+  --border:#e5e7eb;
+  --text:#0f172a;
+  --muted:#475569;
+  --accent:#0ea5e9;
+}
+*{box-sizing:border-box}
+html,body{height:100%}
+body{margin:0;font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif;background:var(--bg);color:var(--text)}
+.header{position:sticky;top:0;background:rgba(255,255,255,.9);backdrop-filter:saturate(1.2) blur(8px);border-bottom:1px solid var(--border);z-index:10}
+.header-inner{display:flex;align-items:center;justify-content:space-between;padding:14px 16px;max-width:1120px;margin:0 auto}
+.brand{display:flex;align-items:center;gap:12px}
+.logo{width:36px;height:36px;border-radius:10px;background:linear-gradient(135deg,var(--accent),#38bdf8);box-shadow:0 2px 8px rgba(2,6,23,.08)}
+.h1{margin:0;font-size:22px;font-weight:800;letter-spacing:.2px}
+.sub{margin:2px 0 0 0;color:var(--muted);font-size:13px}
+.actions{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+.btn{display:inline-flex;align-items:center;gap:8px;border:1px solid var(--border);background:var(--card);padding:10px 14px;border-radius:12px;cursor:pointer;text-decoration:none;color:inherit;box-shadow:0 1px 2px rgba(2,6,23,.04)}
+.btn.primary{border-color:transparent;background:linear-gradient(135deg,var(--accent),#38bdf8);color:#fff}
+.btn:active{transform:translateY(1px)}
+.container{max-width:1120px;margin:0 auto;padding:16px}
+.card{background:var(--card);border:1px solid var(--border);border-radius:16px;box-shadow:0 1px 3px rgba(2,6,23,.06);margin-bottom:16px;overflow:hidden}
+.card-header{padding:16px 16px 0 16px}
+.card-title{margin:0;font-size:20px;font-weight:800;display:flex;align-items:center;gap:10px;font-family:"Playfair Display",serif}
+.card-sub{margin:4px 16px 0 16px;font-size:13px;color:var(--muted)}
+.card-content{padding:12px 16px 16px 16px}
+.grid-3{display:grid;grid-template-columns:1fr;gap:10px}
+@media(min-width:640px){.grid-3{grid-template-columns:repeat(3,1fr)}}
+.pill{padding:12px;border-radius:14px;background:#f1f5f9;border:1px solid var(--border)}
+.pill .small{color:var(--muted)}
+.tablist{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-bottom:8px}
+.tab{padding:12px 14px;border:1px solid var(--border);border-radius:12px;background:var(--card);cursor:pointer;font-weight:600;color:#0f172a}
+.tab.active{border-color:var(--accent);box-shadow:inset 0 0 0 2px rgba(14,165,233,.18)}
+.tabpanel{display:none}
+.tabpanel.active{display:block}
+.row{display:flex;gap:12px;align-items:flex-start;padding:10px 0;border-bottom:1px solid var(--border)}
+.row:last-child{border-bottom:none}
+.small{font-size:13px;color:var(--muted)}
+.check{width:18px;height:18px;accent-color:var(--accent)}
+.place-title{margin:0;font-weight:700;letter-spacing:.1px}
+.map-embed{width:100%;height:360px;border:0;border-radius:12px}
+.map-strip{display:flex;flex-wrap:wrap;gap:12px;align-items:center;border-top:1px solid var(--border);background:#f8fafc;padding:10px;border-radius:0 0 12px 12px}
+.link{color:var(--accent);text-decoration:underline;text-underline-offset:3px}
+.footer{color:var(--muted);text-align:center;padding:24px}
+.accordion-item{border:1px solid var(--border);border-radius:14px;margin-bottom:10px;overflow:hidden;background:#f9fafb}
+.accordion-header{background:#f8fafc;padding:10px 12px;cursor:pointer;display:flex;align-items:center;gap:8px}
+.accordion-content{padding:12px;border-top:1px solid var(--border)}
+.progress{display:flex;align-items:center;gap:8px;color:var(--muted);font-size:13px}
+.progress strong{color:#0f172a}
+.thumb{width:100%;max-width:420px;height:auto;border-radius:10px;margin-top:8px}
+</style>
+</head>
+<body>
+
+<script>
+  // Set this to your GitHub Pages base (images folder). Example:
+  // https://YOUR_USERNAME.github.io/YOUR_REPO/images/
+  const GITHUB_BASE = 'https://ellabear2023-sys.github.io/main/';
+</script>
+
+<header class="header">
+<div class="header-inner">
+<div class="brand">
+<div class="logo"></div>
+<div>
+<h1 class="h1">NYC Weekend Guide</h1>
+<p class="sub">Tony’s Friday • Central Park + Zoo • Broadway Saturday • Ellen’s Sunday</p>
+</div>
+</div>
+<div class="actions">
+<div class="progress"><strong id="progressNumber">0%</strong> done</div>
+<button class="btn" onclick="window.print()">Print</button>
+<a class="btn primary" href="https://maps.apple.com/?q=1605%20Broadway%2C%20New%20York%2C%20NY%2010019" target="_blank" rel="noreferrer">Open Hotel in Maps</a>
+</div>
+</div>
+</header>
+<main class="container">
+<section class="card">
+<div class="card-header">
+<h2 class="card-title">Your Weekend at a Glance</h2>
+</div>
+<div class="card-content grid-3">
+<div class="pill"><div class="small">Friday</div><div>Dinner at Tony’s • Times Square stroll</div></div>
+<div class="pill"><div class="small">Saturday</div><div>Central Park &amp; Zoo • Lunch • Museum or Chelsea • Broadway</div></div>
+<div class="pill"><div class="small">Sunday</div><div>Ellen’s Stardust • Bryant Park/Times Sq</div></div>
+</div>
+</section>
+<!-- Removed the Subway/Quick Tools section per your request -->
+<section class="tabs">
+<div aria-label="Days" class="tablist" role="tablist">
+<button aria-selected="true" class="tab active" id="tab-fri" onclick="showTab('fri')" role="tab">Friday</button>
+<button aria-selected="false" class="tab" id="tab-sat" onclick="showTab('sat')" role="tab">Saturday</button>
+<button aria-selected="false" class="tab" id="tab-sun" onclick="showTab('sun')" role="tab">Sunday</button>
+</div>
+<div aria-labelledby="tab-fri" class="tabpanel active" id="panel-fri" role="tabpanel">
+<div class="card">
+<div class="card-header"><h3 class="card-title">Friday Evening</h3></div>
+<div class="card-content" id="friday-list"></div>
+</div>
+</div>
+<div aria-labelledby="tab-sat" class="tabpanel" id="panel-sat" role="tabpanel">
+<div class="card" id="central-park">
+<div class="card-header">
+<h3 class="card-title">Saturday Morning – Central Park &amp; Zoo</h3>
+<div class="card-sub">Enter at 59th &amp; 5th → Zoo → Bethesda Terrace → Bow Bridge → The Mall</div>
+</div>
+<div class="card-content">
+<!-- Visual map embed (Google for embed only). All open links go to Apple Maps. -->
+<iframe class="map-embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d6042.101931383394!2d-73.9759546!3d40.7740597!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c2588fae8a6a6d%3A0x34f1bcdf1fbf0f1!2sBethesda%20Terrace!5e0!3m2!1sen!2sus!4v1723420000000"></iframe>
+<div class="map-strip small">
+<strong>Route:</strong>
+<a class="link" href="https://maps.apple.com/?q=Central+Park+Zoo,+E+64th+St+%26+5th+Ave,+New+York,+NY+10021" rel="noreferrer" target="_blank">Zoo</a>
+<a class="link" href="https://maps.apple.com/?q=Bethesda+Terrace,+Central+Park,+New+York,+NY+10021" rel="noreferrer" target="_blank">Bethesda Terrace</a>
+<a class="link" href="https://maps.apple.com/?q=Bow+Bridge,+Central+Park,+New+York,+NY+10024" rel="noreferrer" target="_blank">Bow Bridge</a>
+<a class="link" href="https://maps.apple.com/?q=The+Mall,+Central+Park,+New+York,+NY" rel="noreferrer" target="_blank">The Mall</a>
+</div>
+<div id="sat-morning-list"></div>
+</div>
+</div>
+<div class="card">
+<div class="card-header"><h3 class="card-title">Lunch Near the Park</h3><div class="card-sub">Classic, easy, and tasty picks within walking distance</div></div>
+<div class="card-content" id="lunch-list"></div>
+</div>
+
+<div class="card">
+  <div class="card-header"><h3 class="card-title">Rest and Recover</h3><div class="card-sub">Take a break, freshen up, and get ready for the evening plans.</div></div>
+  <div class="card-content" id="hotel-list"></div>
+</div>
+
+
+<div class="card">
+<div class="card-header"><h3 class="card-title">Saturday Evening – Dinner &amp; Broadway</h3><div class="card-sub">Both are in Midtown and walkable</div></div>
+<div class="card-content" id="sat-evening-list"></div>
+</div>
+</div>
+<div aria-labelledby="tab-sun" class="tabpanel" id="panel-sun" role="tabpanel">
+<div class="card">
+<div class="card-header"><h3 class="card-title">Sunday Morning</h3></div>
+<div class="card-content" id="sunday-list"></div>
+</div>
+</div>
+</section>
+<footer class="footer">
+    Built for your NYC weekend • Print-friendly • Apple Maps links
+  </footer>
+</main>
+<script>
+// ---------- Apple Maps helper ----------
+function amap(q){ return 'https://maps.apple.com/?q=' + encodeURIComponent(q); }
+
+// ---------- Data (times and addresses) ----------
+const friday = [
+  { key: 'chelsea',name: 'Chelsea Market + High Line', address: '75 9th Ave, New York, NY 10011', notes: 'Food hall browsing, then a scenic High Line walk toward Hudson Yards.', img: GITHUB_BASE + 'chealsea%20market.jpeg' },
+  { key: 'tsquare',name: 'Times Square (optional stroll)', address: 'Broadway & 7th Ave, New York, NY 10036', notes: 'Post‑dinner lights and photos.', img: GITHUB_BASE + 'times%20square.jpeg' },
+];
+const saturdayMorning = [
+  { key: 'cp-entrance',name: 'Central Park South Entrance', address: '59th St & 5th Ave, New York, NY 10019', img: GITHUB_BASE + 'centeral%20park.jpeg' },
+  { key: 'cp-zoo', name: 'Central Park Zoo', address: 'E 64th St & 5th Ave, New York, NY 10021' },
+  { key: 'bethesda', name: 'Bethesda Terrace & Fountain', address: 'Mid‑Park at 72nd St, New York, NY 10021' },
+  { key: 'bowbridge', name: 'Bow Bridge', address: 'Mid‑Park at 74th St, New York, NY 10024' },
+  { key: 'themall', name: 'The Mall', address: '66th–72nd St, Central Park, New York, NY' },
+];
+const lunchNearPark = [
+  { key: 'sarabeths', name: 'Sarabeth’s Central Park South', address: '40 Central Park S, New York, NY 10019', notes: 'Classic NYC brunch/lunch.' },
+  { key: 'carnegiediner', name: 'Carnegie Diner & Café', address: '828 8th Ave, New York, NY 10019', notes: 'Hearty diner plates near the Theater District.' },
+  { key: 'smith', name: 'The Smith – Lincoln Square', address: '1900 Broadway, New York, NY 10023', notes: 'American classics; easy from the west side of the park.' },
+];
+
+const hotelList = [
+  ];
+
+const saturdayAfternoonOptions = [
+  { key: 'met',title: 'The Metropolitan Museum of Art', address: '1000 5th Ave, New York, NY 10028', details: 'World‑class art. Enter on 5th Ave; quick cab or walk along the park’s east side.', img: GITHUB_BASE + 'The%20Metropolitan%20Museum%20of%20Art.jpeg' },
+  { key: 'amnh',title: 'American Museum of Natural History', address: 'Central Park West & 79th St, New York, NY 10024', details: 'Dinos, planetarium, and more. Easy if you’re on the west side.', img: GITHUB_BASE + 'American%20Museum%20of%20Natural%20History.jpeg' },
+  { key: 'chelsea',title: 'Chelsea Market + High Line', address: '75 9th Ave, New York, NY 10011', details: 'Food hall browsing, then a scenic High Line walk toward Hudson Yards.', img: GITHUB_BASE + 'chealsea%20market.jpeg' },
+];
+const saturdayEvening = [
+  { key: 'tonys', name: 'Tony’s Di Napoli (Times Square)', address: '147 W 43rd St, New York, NY 10036', notes: 'Dinner reservation at 4:15 PM before the show', img: GITHUB_BASE + 'tonys.jpeg' },
+  { key: 'broadway',name: 'Broadway Show', address: '(Your theater – Midtown)', notes: 'Curtain at 7:00 PM (Saturday)', img: GITHUB_BASE + 'Broadway%20show.jpeg' },
+];
+const sunday = [
+  { key: 'ellens',name: 'Ellen’s Stardust Diner', address: '1650 Broadway, New York, NY 10019', notes: 'Singing servers – fun morning send‑off.', img: GITHUB_BASE + 'ellens%20stardust%20diner.jpeg' },
+  { key: 'bryant', name: 'Bryant Park (optional stroll)', address: '42nd St & 6th Ave, New York, NY 10018', notes: 'Green space + coffee before you go.' , img: GITHUB_BASE + 'Bryant%20park.jpeg' },
+];
+
+// ---------- State (checkboxes) ----------
+let done = {};
+try {
+  const saved = localStorage.getItem('nyc_done_plain_html');
+  if(saved) done = JSON.parse(saved);
+} catch(e){}
+
+function saveDone(){ try{ localStorage.setItem('nyc_done_plain_html', JSON.stringify(done)); }catch(e){} }
+function toggleDone(k){
+  done[k] = !done[k];
+  saveDone();
+  renderProgress();
+}
+
+// ---------- Helpers ----------
+function rowHTML(p){
+  const checked = done[p.key] ? 'checked' : '';
+  return `
+    <div class="row">
+      <input type="checkbox" class="check" ${checked} onclick="toggleDone('${p.key}')">
+      <div style="flex:1">
+        <p class="place-title">${p.name}</p>
+        <p class="small">${p.address}</p>
+        ${p.notes ? `<p class="small">${p.notes}</p>` : ''}
+        ${p.img ? `<img class="thumb" src="${p.img}" alt="${p.name}">` : ''}
+      </div>
+      <a class="btn primary" target="_blank" rel="noreferrer" href="${amap(p.name + ' ' + p.address)}">Open in Maps</a>
+    </div>
+  `;
+}
+
+function renderList(elId, items){
+  const el = document.getElementById(elId);
+  el.innerHTML = items.map(rowHTML).join('');
+}
+
+function renderAccordion(elId, items){
+  const el = document.getElementById(elId);
+  el.innerHTML = items.map((opt, i) => {
+    const checked = done[opt.key] ? 'checked' : '';
+    return `
+      <div class="accordion-item">
+        <div class="accordion-header" onclick="toggleAccordion(${i})">
+          <input type="checkbox" class="check" ${checked} onclick="event.stopPropagation(); toggleDone('${opt.key}')">
+          <div style="flex:1">
+            <div class="place-title">${opt.title}</div>
+            <div class="small">${opt.address}</div>
+          </div>
+          <div class="small" id="acc-caret-${i}">▼</div>
+        </div>
+        <div class="accordion-content" id="acc-content-${i}" style="display:none">
+          <div class="small" style="margin-bottom:8px">${opt.details}</div>
+          ${opt.img ? `<img class="thumb" src="${opt.img}" alt="${opt.title}">` : ``}
+          <a class="btn" target="_blank" rel="noreferrer" href="${amap(opt.title + ' ' + opt.address)}">Open in Maps</a>
+        </div>
+      </div>
+    `;
+  }).join('');
+  window._accordionItems = items;
+}
+
+function toggleAccordion(i){
+  const content = document.getElementById('acc-content-' + i);
+  const caret = document.getElementById('acc-caret-' + i);
+  const isOpen = content.style.display !== 'none';
+  content.style.display = isOpen ? 'none' : 'block';
+  caret.textContent = isOpen ? '▼' : '▲';
+}
+
+function renderProgress(){
+  const keys = Object.keys(done);
+  const total = keys.length;
+  const completed = keys.filter(k => done[k]).length;
+  const pct = total ? Math.round(completed/total*100) : 0;
+  document.getElementById('progressNumber').textContent = pct + '%';
+}
+
+// ---------- Tabs ----------
+function showTab(which){
+  ['fri','sat','sun'].forEach(v=>{
+    document.getElementById('tab-'+v).classList.toggle('active', v===which);
+    document.getElementById('panel-'+v).classList.toggle('active', v===which);
+  });
+}
+
+window.showTab = showTab;
+window.toggleDone = toggleDone;
+window.toggleAccordion = toggleAccordion;
+
+// Initial render
+renderList('friday-list', friday);
+renderList('sat-morning-list', saturdayMorning);
+renderList('lunch-list', lunchNearPark);
+renderList('hotel-list', hotelList);
+renderList('sat-evening-list', saturdayEvening);
+renderList('sunday-list', sunday);
+renderAccordion('accordion', saturdayAfternoonOptions);
+renderProgress();
+</script>
+
+<script>
+(function(){
+  try {
+    var proto = location.protocol;
+    // If opened as a local file, some mobile browsers may restrict JS/localStorage
+    if (proto === 'file:' && /iPhone|iPad|iPod|Android/i.test(navigator.userAgent)) {
+      var banner = document.createElement('div');
+      banner.style.cssText = 'position:sticky;top:0;z-index:9999;background:#fff3cd;color:#664d03;padding:10px 14px;border-bottom:1px solid #ffe58f;font-size:13px';
+      banner.textContent = 'Tip: If tabs or checkboxes don\'t work on your phone when opened from Files, host this file (e.g., via http://localhost or GitHub Pages).';
+      document.body.insertBefore(banner, document.body.firstChild);
+    }
+  } catch(e) {}
+})();
+</script>
+</body>
+</html>
