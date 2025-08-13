@@ -153,11 +153,11 @@ function amap(q){ return 'https://maps.apple.com/?q=' + encodeURIComponent(q); }
 
 // ---------- Data (times and addresses) ----------
 const friday = [
-  { key: 'tonys',name: 'Tony’s Di Napoli (Times Square)', address: '147 W 43rd St, New York, NY 10036', notes: 'Dinner reservation at 7:00 PM (Friday)', img: 'tonys.jpeg' },
-  { key: 'tsquare',name: 'Times Square (optional stroll)', address: 'Broadway & 7th Ave, New York, NY 10036', notes: 'Post‑dinner lights and photos.', img: 'times square.jpeg' },
+  { key: 'tonys',name: 'Tony’s Di Napoli (Times Square)', address: '147 W 43rd St, New York, NY 10036', notes: 'Dinner reservation at 7:00 PM (Friday)', img: 'https://raw.githubusercontent.com/yourusername/yourrepo/main/images/tonys.jpeg' },
+  { key: 'tsquare',name: 'Times Square (optional stroll)', address: 'Broadway & 7th Ave, New York, NY 10036', notes: 'Post‑dinner lights and photos.', img: 'https://raw.githubusercontent.com/yourusername/yourrepo/main/images/times%20square.jpeg' },
 ];
 const saturdayMorning = [
-  { key: 'cp-entrance',name: 'Central Park South Entrance', address: '59th St & 5th Ave, New York, NY 10019', img: 'centeral park.jpeg' },
+  { key: 'cp-entrance',name: 'Central Park South Entrance', address: '59th St & 5th Ave, New York, NY 10019', img: 'https://raw.githubusercontent.com/yourusername/yourrepo/main/images/centeral%20park.jpeg' },
   { key: 'cp-zoo', name: 'Central Park Zoo', address: 'E 64th St & 5th Ave, New York, NY 10021' },
   { key: 'bethesda', name: 'Bethesda Terrace & Fountain', address: 'Mid‑Park at 72nd St, New York, NY 10021' },
   { key: 'bowbridge', name: 'Bow Bridge', address: 'Mid‑Park at 74th St, New York, NY 10024' },
@@ -169,15 +169,15 @@ const lunchNearPark = [
   { key: 'smith', name: 'The Smith – Lincoln Square', address: '1900 Broadway, New York, NY 10023', notes: 'American classics; easy from the west side of the park.' },
 ];
 const saturdayAfternoonOptions = [
-  { key: 'met',title: 'The Metropolitan Museum of Art', address: '1000 5th Ave, New York, NY 10028', details: 'World‑class art. Enter on 5th Ave; quick cab or walk along the park’s east side.', img: 'The Metropolitan Museum of Art.jpeg' },
-  { key: 'amnh',title: 'American Museum of Natural History', address: 'Central Park West & 79th St, New York, NY 10024', details: 'Dinos, planetarium, and more. Easy if you’re on the west side.', img: 'American Museum of Natural History.jpeg' },
-  { key: 'chelsea',title: 'Chelsea Market + High Line', address: '75 9th Ave, New York, NY 10011', details: 'Food hall browsing, then a scenic High Line walk toward Hudson Yards.', img: 'chealsea market.jpeg' },
+  { key: 'met',title: 'The Metropolitan Museum of Art', address: '1000 5th Ave, New York, NY 10028', details: 'World‑class art. Enter on 5th Ave; quick cab or walk along the park’s east side.', img: 'https://raw.githubusercontent.com/yourusername/yourrepo/main/images/The%20Metropolitan%20Museum%20of%20Art.jpeg' },
+  { key: 'amnh',title: 'American Museum of Natural History', address: 'Central Park West & 79th St, New York, NY 10024', details: 'Dinos, planetarium, and more. Easy if you’re on the west side.', img: 'https://raw.githubusercontent.com/yourusername/yourrepo/main/images/American%20Museum%20of%20Natural%20History.jpeg' },
+  { key: 'chelsea',title: 'Chelsea Market + High Line', address: '75 9th Ave, New York, NY 10011', details: 'Food hall browsing, then a scenic High Line walk toward Hudson Yards.', img: 'https://raw.githubusercontent.com/yourusername/yourrepo/main/images/chealsea%20market.jpeg' },
 ];
 const saturdayEvening = [
-  { key: 'broadway',name: 'Broadway Show', address: '(Your theater – Midtown)', notes: 'Curtain at 7:00 PM (Saturday)', img: 'Broadway show.jpeg' },
+  { key: 'broadway',name: 'Broadway Show', address: '(Your theater – Midtown)', notes: 'Curtain at 7:00 PM (Saturday)', img: 'https://raw.githubusercontent.com/yourusername/yourrepo/main/images/Broadway%20show.jpeg' },
 ];
 const sunday = [
-  { key: 'ellens',name: 'Ellen’s Stardust Diner', address: '1650 Broadway, New York, NY 10019', notes: 'Singing servers – fun morning send‑off.', img: 'ellens stardust diner.jpeg' },
+  { key: 'ellens',name: 'Ellen’s Stardust Diner', address: '1650 Broadway, New York, NY 10019', notes: 'Singing servers – fun morning send‑off.', img: 'https://raw.githubusercontent.com/yourusername/yourrepo/main/images/ellens%20stardust%20diner.jpeg' },
   { key: 'bryant', name: 'Bryant Park (optional stroll)', address: '42nd St & 6th Ave, New York, NY 10018', notes: 'Green space + coffee before you go.' },
 ];
 
@@ -279,7 +279,6 @@ renderList('sunday-list', sunday);
 renderAccordion('accordion', saturdayAfternoonOptions);
 renderProgress();
 </script>
-
 <script>
 (function(){
   try {
@@ -296,3 +295,4 @@ renderProgress();
 </script>
 </body>
 </html>
+
