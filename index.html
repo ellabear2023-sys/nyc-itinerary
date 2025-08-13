@@ -66,7 +66,7 @@ body{margin:0;font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Helvetic
 <script>
   // Set this to your GitHub Pages base (images folder). Example:
   // https://YOUR_USERNAME.github.io/YOUR_REPO/images/
-  const GITHUB_BASE = 'https://ellabear2023-sys.github.io/nyc-itinerary/';
+  const GITHUB_BASE = 'https://ellabear2023-sys.github.io/main/';
 </script>
 
 <header class="header">
@@ -161,11 +161,11 @@ function amap(q){ return 'https://maps.apple.com/?q=' + encodeURIComponent(q); }
 
 // ---------- Data (times and addresses) ----------
 const friday = [
-  { key: 'chelsea',name: 'Chelsea Market + High Line', address: '75 9th Ave, New York, NY 10011', notes: 'Food hall browsing, then a scenic High Line walk toward Hudson Yards.', img: GITHUB_BASE + 'chealsea%20market.jpeg' },
-  { key: 'tsquare',name: 'Times Square (optional stroll)', address: 'Broadway & 7th Ave, New York, NY 10036', notes: 'Post‑dinner lights and photos.', img: GITHUB_BASE + 'times%20square.jpeg' },
+  { key: 'chelsea',name: 'Chelsea Market + High Line', address: '75 9th Ave, New York, NY 10011', notes: 'Food hall browsing, then a scenic High Line walk toward Hudson Yards.', img: 'https://raw.githubusercontent.com/ellabear2023-sys/nyc-itinerary/main/chealsea%20market.jpeg' },
+  { key: 'tsquare',name: 'Times Square (optional stroll)', address: 'Broadway & 7th Ave, New York, NY 10036', notes: 'Post‑dinner lights and photos.', img: 'https://raw.githubusercontent.com/ellabear2023-sys/nyc-itinerary/main/times%20square.jpeg' },
 ];
 const saturdayMorning = [
-  { key: 'cp-entrance',name: 'Central Park South Entrance', address: '59th St & 5th Ave, New York, NY 10019', img: GITHUB_BASE + 'centeral%20park.jpeg' },
+  { key: 'cp-entrance',name: 'Central Park South Entrance', address: '59th St & 5th Ave, New York, NY 10019', img: 'https://raw.githubusercontent.com/ellabear2023-sys/nyc-itinerary/main/centeral%20park.jpeg' },
   { key: 'cp-zoo', name: 'Central Park Zoo', address: 'E 64th St & 5th Ave, New York, NY 10021' },
   { key: 'bethesda', name: 'Bethesda Terrace & Fountain', address: 'Mid‑Park at 72nd St, New York, NY 10021' },
   { key: 'bowbridge', name: 'Bow Bridge', address: 'Mid‑Park at 74th St, New York, NY 10024' },
@@ -181,17 +181,17 @@ const hotelList = [
   ];
 
 const saturdayAfternoonOptions = [
-  { key: 'met',title: 'The Metropolitan Museum of Art', address: '1000 5th Ave, New York, NY 10028', details: 'World‑class art. Enter on 5th Ave; quick cab or walk along the park’s east side.', img: GITHUB_BASE + 'The%20Metropolitan%20Museum%20of%20Art.jpeg' },
-  { key: 'amnh',title: 'American Museum of Natural History', address: 'Central Park West & 79th St, New York, NY 10024', details: 'Dinos, planetarium, and more. Easy if you’re on the west side.', img: GITHUB_BASE + 'American%20Museum%20of%20Natural%20History.jpeg' },
-  { key: 'chelsea',title: 'Chelsea Market + High Line', address: '75 9th Ave, New York, NY 10011', details: 'Food hall browsing, then a scenic High Line walk toward Hudson Yards.', img: GITHUB_BASE + 'chealsea%20market.jpeg' },
+  { key: 'met',title: 'The Metropolitan Museum of Art', address: '1000 5th Ave, New York, NY 10028', details: 'World‑class art. Enter on 5th Ave; quick cab or walk along the park’s east side.', img: 'https://raw.githubusercontent.com/ellabear2023-sys/nyc-itinerary/main/The%20Metropolitan%20Museum%20of%20Art.jpeg' },
+  { key: 'amnh',title: 'American Museum of Natural History', address: 'Central Park West & 79th St, New York, NY 10024', details: 'Dinos, planetarium, and more. Easy if you’re on the west side.', img: 'https://raw.githubusercontent.com/ellabear2023-sys/nyc-itinerary/main/American%20Museum%20of%20Natural%20History.jpeg' },
+  { key: 'chelsea',title: 'Chelsea Market + High Line', address: '75 9th Ave, New York, NY 10011', details: 'Food hall browsing, then a scenic High Line walk toward Hudson Yards.', img: 'https://raw.githubusercontent.com/ellabear2023-sys/nyc-itinerary/main/chealsea%20market.jpeg' },
 ];
 const saturdayEvening = [
-  { key: 'tonys', name: 'Tony’s Di Napoli (Times Square)', address: '147 W 43rd St, New York, NY 10036', notes: 'Dinner reservation at 4:15 PM before the show', img: GITHUB_BASE + 'tonys.jpeg' },
-  { key: 'broadway',name: 'Broadway Show', address: '(Your theater – Midtown)', notes: 'Curtain at 7:00 PM (Saturday)', img: GITHUB_BASE + 'Broadway%20show.jpeg' },
+  { key: 'tonys', name: 'Tony’s Di Napoli (Times Square)', address: '147 W 43rd St, New York, NY 10036', notes: 'Dinner reservation at 4:15 PM before the show', img: 'https://raw.githubusercontent.com/ellabear2023-sys/nyc-itinerary/main/https://raw.githubusercontent.com/ellabear2023-sys/nyc-itinerary/main/tonys.jpeg' },
+  { key: 'broadway',name: 'Broadway Show', address: '(Your theater – Midtown)', notes: 'Curtain at 7:00 PM (Saturday)', img: 'https://raw.githubusercontent.com/ellabear2023-sys/nyc-itinerary/main/Broadway%20show.jpeg' },
 ];
 const sunday = [
-  { key: 'ellens',name: 'Ellen’s Stardust Diner', address: '1650 Broadway, New York, NY 10019', notes: 'Singing servers – fun morning send‑off.', img: GITHUB_BASE + 'ellens%20stardust%20diner.jpeg' },
-  { key: 'bryant', name: 'Bryant Park (optional stroll)', address: '42nd St & 6th Ave, New York, NY 10018', notes: 'Green space + coffee before you go.' , img: GITHUB_BASE + 'Bryant%20park.jpeg' },
+  { key: 'ellens',name: 'Ellen’s Stardust Diner', address: '1650 Broadway, New York, NY 10019', notes: 'Singing servers – fun morning send‑off.', img: 'https://raw.githubusercontent.com/ellabear2023-sys/nyc-itinerary/main/ellens%20stardust%20diner.jpeg' },
+  { key: 'bryant', name: 'Bryant Park (optional stroll)', address: '42nd St & 6th Ave, New York, NY 10018', notes: 'Green space + coffee before you go.' , img: 'https://raw.githubusercontent.com/ellabear2023-sys/nyc-itinerary/main/Bryant%20park.jpeg' },
 ];
 
 // ---------- State (checkboxes) ----------
